@@ -1,0 +1,30 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  workflow_dispatch:
+    inputs:
+      AZURE_RESOURCE_NAME:
+        description: 'Azure Resource Name'
+        required: true
+      AZURE_DEPLOYMENT_NAME:
+        description: 'Azure Deployment Name'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Wrangler
+      run: npm install -g @cloudflare/wrangler
+
+    - name: Publish to Cloudflare Workers
+      run: wrangler publish
+      env:
+        CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        AZURE_RESOURCE_NAME: ${{ github.event.inputs.AZURE_RESOURCE_NAME }}
+        AZURE_DEPLOYMENT_NAME: ${{ github.event.inputs.AZURE_DEPLOYMENT_NAME }}
