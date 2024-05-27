@@ -29,3 +29,6 @@ Make sure you have these values ready before starting the deployment.
    - `CF_ACCOUNT_ID`: Your Cloudflare Account ID.
    - `CF_API_TOKEN`: Your Cloudflare API Token.
 5. Click the "Deploy to Cloudflare" button above to start the deployment process.
+
+see [Deploy button](https://developers.cloudflare.com/workers/tutorials/deploy-button/) for any deployment related questions.
+
