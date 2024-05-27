@@ -61,6 +61,6 @@ async fetch(request,env, ctx) {
   return new Response(JSON.stringify(openaiResponse), {
     headers: { 'Content-Type': 'application/json' }
   })
-};
+}
 
 }
