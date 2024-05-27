@@ -21,7 +21,7 @@ async function handleAzureRequest(request, env, apiKey) {
   const openaiRequest = await request.json();
 
   const azureRequest = {
-    messages: openaiRequest.messages,
+    ...openaiRequest,
   };
 
   const azureResourceName = env.AZURE_RESOURCE_NAME;
@@ -72,9 +72,12 @@ async function handleAnthropicRequest(request, env, apiKey) {
   }
 
   const anthropicPayload = {
+    ...openaiRequest,
     system: systemContent || '',
     messages: userMessages
   };
+
+  delete anthropicPayload.messages.find(msg => msg.role === 'system');
 
   const anthropicResponse = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
