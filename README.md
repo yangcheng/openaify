@@ -1,3 +1,10 @@
+# What does this do?
+
+The worker script act as adapter to convert Azure OpenAI API to be fully compatible with OpenAI API. So you can use this for many apps where it ask for an OpenAI API key and Base URL.
+
+After the script is deployed to cloudflare worker, use the worker URL `
+https://xxx.xxx.workers.dev/` as Base URL , and Azure api-key as OpenAI API Key. 
+
 # Deploy to Cloudflare
 
 Click the button below to deploy this Cloudflare Worker to your account.
