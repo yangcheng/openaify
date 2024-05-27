@@ -5,10 +5,13 @@ on:
     inputs:
       AZURE_RESOURCE_NAME:
         description: 'Azure Resource Name'
-        required: true
+        required: false
       AZURE_DEPLOYMENT_NAME:
         description: 'Azure Deployment Name'
-        required: true
+        required: false
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -26,5 +29,5 @@ jobs:
       env:
         CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-        AZURE_RESOURCE_NAME: ${{ github.event.inputs.AZURE_RESOURCE_NAME }}
-        AZURE_DEPLOYMENT_NAME: ${{ github.event.inputs.AZURE_DEPLOYMENT_NAME }}
+        AZURE_RESOURCE_NAME: ${{ github.event.inputs.AZURE_RESOURCE_NAME || secrets.AZURE_RESOURCE_NAME }}
+        AZURE_DEPLOYMENT_NAME: ${{ github.event.inputs.AZURE_DEPLOYMENT_NAME || secrets.AZURE_DEPLOYMENT_NAME }}
