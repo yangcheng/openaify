@@ -8,11 +8,9 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+export default {
 
-async function handleRequest(request,env, ctx) {
+async fetch(request,env, ctx) {
   // Extract the OpenAI API request body
   const openaiRequest = await request.json()
 
@@ -29,8 +27,8 @@ async function handleRequest(request,env, ctx) {
     // Add any other necessary parameters here
   }
 
-  const azureResourceName = env.get("AZURE_RESOURCE_NAME")
-  const azureDeploymentName = env.get("AZURE_DEPLOYMENT_NAME")
+  const azureResourceName = env.AZURE_RESOURCE_NAME
+  const azureDeploymentName = env.AZURE_DEPLOYMENT_NAME
 
   // Call Azure OpenAI
   const azureResponse = await fetch(`https://${azureResourceName}.openai.azure.com/openai/deployments/${azureDeploymentName}/chat/completions?api-version=2024-02-15-preview`, {
@@ -64,3 +62,5 @@ async function handleRequest(request,env, ctx) {
     headers: { 'Content-Type': 'application/json' }
   })
 };
+
+}
