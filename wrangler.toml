@@ -1,0 +1,8 @@
+name = "azure-openai"
+main = "src/index.js"
+compatibility_date = "2024-05-26"
+workers_dev = true
+
+[vars]
+AZURE_DEPLOYMENT_NAME = "4o"
+AZURE_RESOURCE_NAME = "c-east-us"
