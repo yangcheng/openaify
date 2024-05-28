@@ -1,9 +1,17 @@
 # What does this do?
 
-The worker script act as adapter to convert Azure OpenAI API to be fully compatible with OpenAI API. So you can use this for many apps where it ask for an OpenAI API key and Base URL.
+The worker script act as adapter to convert Other LLM API to be fully compatible with OpenAI API. So you can use this for many apps where it ask for an OpenAI API key and Base URL.
+
+Currently Azure OpenAI and Anthropic Claude Message are supported
 
 After the script is deployed to cloudflare worker, use the worker URL `
+
+## Azure OpenAI
 https://xxx.xxx.workers.dev/` as Base URL , and Azure api-key as OpenAI API Key. 
+
+## Anthropic Claude
+
+https://xxx.xxx.workers.dev/claude` as Base URL , and anthropic api-key in bearer header. 
 
 # Deploy to Cloudflare
 
