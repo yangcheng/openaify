@@ -27,7 +27,7 @@ jobs:
     - name: Publish to Cloudflare Workers
       run: wrangler publish
       env:
-        CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-        CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         AZURE_RESOURCE_NAME: ${{ github.event.inputs.AZURE_RESOURCE_NAME || secrets.AZURE_RESOURCE_NAME }}
         AZURE_DEPLOYMENT_NAME: ${{ github.event.inputs.AZURE_DEPLOYMENT_NAME || secrets.AZURE_DEPLOYMENT_NAME }}
